@@ -4,24 +4,24 @@ DROP FUNCTION IF EXISTS insert_crowd_mapping_data(text,text,text,text);
 CREATE OR REPLACE FUNCTION insert_crowd_mapping_data (
     _geojson TEXT,
     _name TEXT,
-    _story TEXT,	
-    _date TEXT)    
+    _address TEXT,	
+    _comments TEXT)    
 --Has to return something in order to be used in a "SELECT" statement
 RETURNS integer
 AS $$
 DECLARE 
     _the_geom GEOMETRY;
 	--The name of your table in cartoDB
-	_the_table TEXT := 'mapbeks';
+	_the_table TEXT := 'bikeshops';
 BEGIN
     --Convert the GeoJSON to a geometry type for insertion. 
     _the_geom := ST_SetSRID(ST_GeomFromGeoJSON(_geojson),4326); 
 	
 
 	--Executes the insert given the supplied geometry, description, and username, while protecting against SQL injection.
-    EXECUTE ' INSERT INTO '||quote_ident(_the_table)||' (the_geom, name, story, date)
+    EXECUTE ' INSERT INTO '||quote_ident(_the_table)||' (the_geom, name, address, comments)
             VALUES ($1, $2, $3, $4)
-            ' USING _the_geom, _name, _story, _date;
+            ' USING _the_geom, _name, _address, _comments;
             
     RETURN 1;
 END;
