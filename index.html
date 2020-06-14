@@ -27,7 +27,7 @@
 	<div id="wrapper">
 		<div id="header">
 			<h1>Bike Shops</h1>
-		        <h2>a</h2>	
+		        <h2>Help other Cyclists find the nearest bike shops!</h2>	
 		</div>
 		<div id="controls">
 			<input onclick="startEdits()" type="button" value="Magdagdag ng kwento."> <input onclick="stopEdits()" type="button" value="Chismis Mode"><br>
@@ -35,19 +35,21 @@
 		</div>
 		<div id="map"></div>
 		<div id="credits">
-			<p>Visit <a href="https://mentalhealthawhereness.com">Mental Health aWHEREness.</a></p>
+			<p>Bike Shops &copy;2020, Ajie Aboganda</p>
+			<p>Github Leaflet Draw Collection Tool &copy;2015, Mike Foster and Raphael Dumas</p>		
+			<p><a href="https://mentalhealthawhereness.com">Mental Health aWHEREness.</a></p>
 		</div>
 	</div>
-	<div id="dialog" title="Ispluk mo na dito:">
+	<div id="dialog" title="Add the Bike Shops!">
 		<form>
 			<fieldset style="border: none;">
 				<ul style="list-style-type: none; padding-left: 0px">
-					<li><label for="fname">Nickname/Nicknames</label></li>
-					<li><input id="fname" name="fname" placeholder="Your/You and Your Partners' Nicknames" size="40" type="text" required></li>
-					<li><label for="address">Kwento mo Bes!</label></li>
-					<li><textarea cols="40" id="address" name="address" placeholder="Ilagay ang kwento na gusto mo i-share." rows="2"></textarea></li>			
+					<li><label for="fname">Name of Bike Shop</label></li>
+					<li><input id="fname" name="fname" placeholder="Enter the name of the Bike Shop" size="40" type="text" required></li>
+					<li><label for="address">Address</label></li>
+					<li><textarea cols="40" id="address" name="address" placeholder="Enter the Address of the Bike Shop" rows="2"></textarea></li>			
 					<li><label for="comments">Kelan nangyari?</label></li>
-					<li><textarea cols="40" id="comments" name="comments" placeholder="Kelan naganap ang iyo/inyong kwento?" rows="5"></textarea></li>					
+					<li><textarea cols="40" id="comments" name="comments" placeholder="Tell us more about your experience at the bike shop specified. Crowdsourced data can help other Cyclists! (Please make sure all information is correct)" rows="5"></textarea></li>					
 				</ul><input style="position:absolute; top:-1000px" tabindex="-1" type="submit">
 			</fieldset>
 		</form>
