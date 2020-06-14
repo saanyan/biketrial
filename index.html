@@ -95,8 +95,8 @@
 	          map.addControl(new L.Control.Fullscreen());
 		
 				  
-            var Map = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-                attribution: '<a href="https://www.openstreetmap.org/copyright>OpenStreetMap</a>, contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>',
+	          var Mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/anditabinas/cka17kkkc1wey1imq7oudguu1/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYW5kaXRhYmluYXMiLCJhIjoiY2plejI3aHp3MDV3MjMzcW9ydXl2bHNmZiJ9.9h6j7BbkM-PUtK0zaZ1iUg', {
+	              attribution: '&copy; <a href="mapbox://styles/anditabinas/cka17kkkc1wey1imq7oudguu1">Mapbox<\/a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap<\/a> contributors',
 	              subdomains: 'abcd',
 	              maxZoom: 20 //Adds the tilelayer basemap; I used my mapbox style here.
 	          }); 
