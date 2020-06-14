@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
-	<title>Bike Shops</title>
+	<title>MapBeks Stories</title>
 	<link href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" rel="stylesheet">
 	<link href="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" rel="stylesheet">
 	<link href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
@@ -26,30 +26,31 @@
 	<body oncontextmenu="return false">
 	<div id="wrapper">
 		<div id="header">
-			<h1>Bike Shops</h1>
-		        <h2>Help other Cyclists find the nearest bike shops!</h2>	
+			<h1>MapBeks Stories</h1>
+		        <h2>Pins = Mga Kwentong LGBTQIA+
+			<br>1. I-click ang "Magdagdag ng kwento." para magkaroon ng pin sa kaliwang part ng mapa.
+			<br>2. I-drag at click ang pin sa location sa mapa. Then ispluk mo na yang kwento mo gorl!
+			<br>Visit <a href="https://mapbeks.com">MapBeks</a> and <a href="https://mentalhealthawhereness.com">Mental Health aWHEREness.</a></br></h2>	
 		</div>
 		<div id="controls">
-			<input onclick="startEdits()" type="button" value="Share your story."> <input onclick="stopEdits()" type="button" value="Read SoBDs."><br>
+			<input onclick="startEdits()" type="button" value="Magdagdag ng kwento."> <input onclick="stopEdits()" type="button" value="Chismis Mode"><br>
 			
 		</div>
 		<div id="map"></div>
 		<div id="credits">
-			<p>Bike Shops &copy;2020, Ajie Aboganda</p>
-            <p>Github Leaflet Draw Collection Tool &copy;2015, Mike Foster and Raphael Dumas</p>            
-			<p><a href="https://mentalhealthawhereness.com">Mental Health aWHEREness &copy;2019, Sandra Tabinas</a></p>
+			<p>Visit <a href="https://mentalhealthawhereness.com">Mental Health aWHEREness.</a></p>
 		</div>
 	</div>
-	<div id="dialog" title="Add the Bike Shops!">
+	<div id="dialog" title="Ispluk mo na dito:">
 		<form>
 			<fieldset style="border: none;">
 				<ul style="list-style-type: none; padding-left: 0px">
-					<li><label for="bname">Name of Bike Shop</label></li>
-					<li><input id="bname" name="bname" placeholder="Enter the name of the Bike Shop" size="40" type="text" required></li>
-					<li><label for="address">Address</label></li>
-					<li><textarea cols="40" id="address" name="address" placeholder="Bike Shop Address" rows="4"></textarea></li>
-					<li><label for="comments">Comments</label></li>
-					<li><textarea cols="40" id="comments" name="comments" placeholder="Tell us more about your experience at the bike shop specified. Crowdsourced data can help other Cyclists! (Please make sure all information is correct)" rows="6"></textarea></li>                    
+					<li><label for="fname">Nickname/Nicknames</label></li>
+					<li><input id="fname" name="fname" placeholder="Your/You and Your Partners' Nicknames" size="40" type="text" required></li>
+					<li><label for="story">Kwento mo Bes!</label></li>
+					<li><textarea cols="40" id="story" name="story" placeholder="Ilagay ang kwento na gusto mo i-share." rows="2"></textarea></li>			
+					<li><label for="date">Kelan nangyari?</label></li>
+					<li><textarea cols="40" id="date" name="date" placeholder="Kelan naganap ang iyo/inyong kwento?" rows="5"></textarea></li>					
 				</ul><input style="position:absolute; top:-1000px" tabindex="-1" type="submit">
 			</fieldset>
 		</form>
@@ -73,7 +74,7 @@
 	          var config = { //TODO: Change to your username, insert function on Carto, and Carto tablename
 	              cartoUsername: "anditabinas",
 	              cartoInsertFunction : "insert_crowd_mapping_data",
-	              cartoTablename: "bikeshops",
+	              cartoTablename: "mapbeks",
 	              mapcenter: [13.325,121.300],
 	              drawOptions: {
 	                  draw: {
@@ -90,13 +91,13 @@
 	          };         
 	          
 	          var cartoData = null; //These adds data from Carto using the SQL API, declares variables, and writes the SQL selection query
-	          var sqlQuery = "SELECT the_geom, name, story, note FROM " + config.cartoTablename;
+	          var sqlQuery = "SELECT the_geom, name, story, date FROM " + config.cartoTablename;
 	          var map = L.map('map', { center: config.mapcenter, zoom: 6});   // Creates the Leaflet map object
 	          map.addControl(new L.Control.Fullscreen());
 		
 				  
-	          var Mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/anditabinas/cka17kkkc1wey1imq7oudguu1/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYW5kaXRhYmluYXMiLCJhIjoiY2plejI3aHp3MDV3MjMzcW9ydXl2bHNmZiJ9.9h6j7BbkM-PUtK0zaZ1iUg', {
-	              attribution: '&copy; <a href="mapbox://styles/anditabinas/cka17kkkc1wey1imq7oudguu1">Mapbox<\/a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap<\/a> contributors',
+	          var Mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/anditabinas/ckb8smaod0c0p1ipqm8jfeqsl/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYW5kaXRhYmluYXMiLCJhIjoiY2plejI3aHp3MDV3MjMzcW9ydXl2bHNmZiJ9.9h6j7BbkM-PUtK0zaZ1iUg', {
+	              attribution: '&copy; <a href="mapbox://styles/anditabinas/ckb8smaod0c0p1ipqm8jfeqsl">Mapbox<\/a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap<\/a> contributors',
 	              subdomains: 'abcd',
 	              maxZoom: 20 //Adds the tilelayer basemap; I used my mapbox style here.
 	          }); 
@@ -116,7 +117,7 @@
 	              $.getJSON(getData, function (data) {
 	                  cartoData = L.geoJson(data, {
 	                      onEachFeature: function (feature, layer) {
-	                          layer.bindPopup('<b>Name of Bikeshop: <\/b>' + feature.properties.name + '<br>' + '<b>Address: <\/b>' + feature.properties.address + '<br>' + '<br>' + '<b>Comment: <\/b>' + feature.properties.comments + '<br>' + '');
+	                          layer.bindPopup('<b>Name: <\/b>' + feature.properties.name + '<br>' + '<b>Story: <\/b>' + feature.properties.story + '<br>' + '<b>Date: <\/b>' + feature.properties.date + '');
 	                      }           
 	                  }).addTo(map);
 	              });
@@ -174,18 +175,18 @@
 	              setData();
 	          });
 	          function setData() {
-	              var enteredBname = "'" + JSON.stringify(bname.value.replace("'", "''")) + "'"
-	              var enteredAddress = "'" + JSON.stringify(address.value.replace("'", "''")) + "'"                  
-	              var enteredComments = "'" + JSON.stringify(comments.value.replace("'", "''")) + "'";
+	              var enteredFname = "'" + JSON.stringify(fname.value.replace("'", "''")) + "'"
+	              var enteredStory = "'" + JSON.stringify(story.value.replace("'", "''")) + "'"			  
+	              var enteredDate = "'" + JSON.stringify(date.value.replace("'", "''")) + "'";
 				  
 			  
 	              drawnItems.eachLayer(function (layer) {
 	                  var drawing = "'" + JSON.stringify(layer.toGeoJSON().geometry) + "'",   //Converts the drawing to a GeoJSON
 	                      sql = "SELECT " + config.cartoInsertFunction + "("; //Constructs the SQL Query from the entered parameters on the dialog/form
 	                  sql += drawing;
-	                  sql += "," + enteredBname;
-	                  sql += "," + enteredAddress;
-	                  sql += "," + enteredComments;                       
+	                  sql += "," + enteredFname;
+	                  sql += "," + enteredStory;
+	                  sql += "," + enteredDate;            
 	                  sql += ");";
 	                  console.log(drawing);
 	                  
@@ -203,9 +204,9 @@
 	                      }
 	                  });
 	                  var newData = layer.toGeoJSON();
-	                    newData.properties.name = bname.value;
-	                    newData.properties.address = address.value;                              
-	                    newData.properties.comments = comments.value;             
+	                    newData.properties.name = fname.value;
+	                    newData.properties.story = story.value;
+	                    newData.properties.date = date.value;             
 	                  cartoData.addData(newData);
 	              });
 	              
